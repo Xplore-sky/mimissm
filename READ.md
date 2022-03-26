@@ -19,3 +19,4 @@
 3. **<druid.version>1.1.12</druid.version>** druid数据库连接池——阿里巴巴
 4. **<pagehelper.version>5.1.2</pagehelper.version>** 分页插件
 5. **<jstl.version>1.2</jstl.version>**
+
