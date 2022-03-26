@@ -8,6 +8,12 @@
 7. 新建**springmvc.xml**文件,配置springmvc的框架
 8. 新建SqlMapConfig.xml文件,进行分页插件的配置
 9. 使用逆向工程生成pojo和mapper的文件
+
+
+
+
+
+
 10. 开发业务逻辑层,实现登录判断
 11. 开发控制器AdminAction,完成登录处理
 12. 改造页面,发送登录请求,验证登录

@@ -3,4 +3,60 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+
+<!--    get请求不用管，post请求需要-->
+<!--    添加字符编码过滤器 -必须放在首位 -->
+    <filter>
+        <filter-name>encode</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <!--配置参数-->
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <!--请求强制转换-->
+        <init-param>
+            <param-name>forceRequestEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <!--响应强制转换-->
+        <init-param>
+            <param-name>forceResponseEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>encode</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+<!--    注册springmvc的框架-->
+    <servlet>
+        <servlet-name>springmvc</servlet-name>
+        <!--核心处理器-->
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <!--建议加上classpath：编译之后类classes的跟路径-->
+            <param-value>classpath:springmvc.xml</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+<!--
+    /admin/login.action 规定以“.action”的请求交给DispatcherServlet
+    /admin/main.jsp
+-->
+        <servlet-name>springmvc</servlet-name>000
+        <url-pattern>*.action</url-pattern>
+    </servlet-mapping>
+<!--    注册spring框架-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext_*.xml</param-value>
+    </context-param>
+
 </web-app>

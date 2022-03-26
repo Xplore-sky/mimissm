@@ -6,7 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
-    <!--<import resource="classpath:applicationContext_dao.xml"/>-->
+<!--    <import resource="classpath:applicationContext_dao.xml"/>-->
 
     <!--    设置业务逻辑层的包扫描器，目的是在指定的路径下，使用@Service注解的类，
         spring负责创建对象，并添加依赖
@@ -19,6 +19,7 @@
         <!--PS:这里DataSource会报红 ，是因为dataSour在 applicationContext_dao.xml 中，可以通过imort标签导入但不这样-->
         <!--因为最后spring所有的配置文件是通过初始化参数注入到spring容器中，所以如果在这个xml文件中有dao包的导入，那么之后注入的时候直接注入service就够了，但一般不这么做-->
         <!--会用通配的方式进行spring配置文件的导入，避免循环导入的操作-->
+        <!--通配在web.xml中-->
         <property name="dataSource" ref="dataSource"/>
     </bean>
     <!--添加事务的切面-->
@@ -55,6 +56,6 @@
     <aop:config>
         <aop:pointcut id="mypoint" expression="execution(* com.zcm.service.*.*(..))"/>
         <!--事务绑定-->
-        <aop:advisor advice-ref="myadvice"pointcut-ref="mypoint"/>
+        <aop:advisor advice-ref="myadvice" pointcut-ref="mypoint"/>
     </aop:config>
 </beans>
