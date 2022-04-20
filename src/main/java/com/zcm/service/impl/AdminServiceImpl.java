@@ -15,6 +15,7 @@ import java.util.List;
 public class AdminServiceImpl implements AdminService {
 
     //在业务逻辑层一定有数据访问层的对象
+    ///对象的注入交给spring
     @Autowired
     AdminMapper adminMapper;
 

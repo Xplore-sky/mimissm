@@ -5,6 +5,6 @@
 
 <!--分页插件的配置,其他所有配置都拿到了spring-dao文件中-->
     <plugins>
-        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"/>
     </plugins>
 </configuration>

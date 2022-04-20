@@ -30,7 +30,10 @@
         <filter-name>encode</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+
 <!--    注册springmvc的框架-->
+    <!---->
     <servlet>
         <servlet-name>springmvc</servlet-name>
         <!--核心处理器-->
@@ -41,14 +44,15 @@
             <param-value>classpath:springmvc.xml</param-value>
         </init-param>
     </servlet>
+
     <servlet-mapping>
-<!--
-    /admin/login.action 规定以“.action”的请求交给DispatcherServlet
-    /admin/main.jsp
--->
-        <servlet-name>springmvc</servlet-name>000
+<!--/admin/login.action 规定以“.action”的请求交给DispatcherServlet
+    /admin/main.jsp-->
+        <servlet-name>springmvc</servlet-name>
         <url-pattern>*.action</url-pattern>
     </servlet-mapping>
+
+
 <!--    注册spring框架-->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
